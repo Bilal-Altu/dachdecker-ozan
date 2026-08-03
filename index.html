@@ -162,6 +162,8 @@ h2.big .ghost{color:transparent;-webkit-text-stroke:2px var(--outline)}
   font-size:13px;font-weight:700;text-decoration:none;color:#fff;transition:background .2s;
 }
 .rating-summary .src:hover{background:var(--brand)}
+.reviews-col{display:grid;gap:12px}
+.swipe-hint{display:none}
 .review-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:16px}
 .review{
   background:var(--card);border-radius:20px;padding:22px 24px;
@@ -358,6 +360,22 @@ footer{padding:clamp(44px,6vw,80px) 0 40px;color:var(--ink-soft)}
   .contact-grid{grid-template-columns:1fr}
   .rating-grid{grid-template-columns:1fr}
   .rating-summary{position:static}
+  /* Bewertungen als Swipe-Karussell statt langer Stapel */
+  .swipe-hint{
+    display:block;font-size:12px;font-weight:700;letter-spacing:.14em;
+    text-transform:uppercase;color:#8b867f;
+  }
+  .review-grid{
+    display:flex;gap:14px;
+    overflow-x:auto;overscroll-behavior-x:contain;
+    scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    margin-inline:calc(-1 * clamp(16px,4vw,40px));
+    padding:4px clamp(16px,4vw,40px) 12px;
+  }
+  .review-grid::-webkit-scrollbar{display:none}
+  .review{flex:0 0 84%;scroll-snap-align:center}
+  .review-grid .reveal{opacity:1;transform:none;transition:none}
   .side-col{position:static}
   .expert{grid-template-columns:1fr}
   .foot-grid{grid-template-columns:1fr}
@@ -678,6 +696,8 @@ footer{padding:clamp(44px,6vw,80px) 0 40px;color:var(--ink-soft)}
           <a class="src" href="https://www.google.com/maps/search/?api=1&amp;query=Dachdeckermeister+Betrieb+Ozan+R%C3%BCsselsheim" target="_blank" rel="noopener">Alle Rezensionen bei Google ↗</a>
         </div>
 
+        <div class="reviews-col">
+        <p class="swipe-hint">← Seitlich wischen für weitere Bewertungen →</p>
         <div class="review-grid">
 
           <article class="review reveal">
@@ -734,6 +754,7 @@ footer{padding:clamp(44px,6vw,80px) 0 40px;color:var(--ink-soft)}
             <div class="tags"><span class="chip">Ansprechbarkeit</span><span class="chip">Pünktlichkeit</span><span class="chip">Qualität</span><span class="chip">Wert</span></div>
           </article>
 
+        </div>
         </div>
       </div>
     </div>
