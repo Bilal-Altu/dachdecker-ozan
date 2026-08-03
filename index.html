@@ -146,13 +146,38 @@ h2.big .ghost{color:transparent;-webkit-text-stroke:2px var(--outline)}
 .welcome-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(22px,3.5vw,54px);align-items:start;margin-top:34px}
 .welcome-text p{margin-bottom:16px;color:var(--ink-soft)}
 .welcome-text p strong{color:var(--ink)}
-.quote{
-  margin-top:26px;background:var(--card);border-radius:20px;padding:24px 26px;
-  border-left:5px solid var(--brand);
-  box-shadow:0 18px 36px -28px rgba(30,26,24,.35);
+/* Bewertungen */
+.rating-grid{display:grid;grid-template-columns:.72fr 1.28fr;gap:18px;margin-top:36px;align-items:start}
+.rating-summary{
+  background:var(--ink);color:#fff;border-radius:22px;
+  padding:clamp(26px,3vw,34px);text-align:center;position:sticky;top:96px;
+  box-shadow:0 20px 40px -30px rgba(30,26,24,.5);
 }
-.quote p{font-size:16px;font-style:italic;color:var(--ink);margin-bottom:10px}
-.quote cite{font-style:normal;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--terra)}
+.rating-summary .score{font-size:clamp(52px,6.5vw,78px);font-weight:900;line-height:1;letter-spacing:-.03em}
+.rating-summary .stars{color:var(--brand);font-size:21px;letter-spacing:3px;margin:8px 0 4px}
+.rating-summary .count{color:#bfbab5;font-size:14px}
+.rating-summary .src{
+  margin-top:20px;display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,.08);border-radius:999px;padding:9px 18px;
+  font-size:13px;font-weight:700;text-decoration:none;color:#fff;transition:background .2s;
+}
+.rating-summary .src:hover{background:var(--brand)}
+.review-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:16px}
+.review{
+  background:var(--card);border-radius:20px;padding:22px 24px;
+  display:flex;flex-direction:column;gap:10px;
+  box-shadow:0 20px 40px -30px rgba(30,26,24,.38);
+}
+.review .head{display:flex;align-items:center;gap:12px}
+.review .ava{
+  width:40px;height:40px;border-radius:50%;background:var(--brand);color:#fff;
+  display:grid;place-items:center;font-weight:800;font-size:15px;flex-shrink:0;
+}
+.review .who{font-weight:700;font-size:14.5px;line-height:1.25}
+.review .when{font-size:12px;color:#8b867f;font-weight:500}
+.review .stars{color:var(--brand);font-size:13px;letter-spacing:2px}
+.review p{font-size:14.5px;color:var(--ink-soft)}
+.review .tags{display:flex;flex-wrap:wrap;gap:6px}
 .fact-stack{display:grid;gap:14px;position:sticky;top:96px}
 .fact{
   background:var(--card);border-radius:20px;padding:22px 24px;
@@ -314,6 +339,10 @@ footer{padding:clamp(44px,6vw,80px) 0 40px;color:var(--ink-soft)}
   .reveal{opacity:1;transform:none;transition:none}
 }
 
+@media (max-width:1080px) and (min-width:921px){
+  .logo svg{height:42px}
+  nav.main a{padding:6px 9px;font-size:12.5px}
+}
 @media (max-width:920px){
   .site-inner{flex-wrap:wrap;padding:10px 0 6px}
   .logo svg{height:40px}
@@ -326,6 +355,8 @@ footer{padding:clamp(44px,6vw,80px) 0 40px;color:var(--ink-soft)}
   .hero-meta{writing-mode:horizontal-tb;transform:none;max-height:none;letter-spacing:.16em;font-size:10px}
   .welcome-grid{grid-template-columns:1fr}
   .contact-grid{grid-template-columns:1fr}
+  .rating-grid{grid-template-columns:1fr}
+  .rating-summary{position:static}
   .fact-stack{position:static}
   .expert{grid-template-columns:1fr}
   .foot-grid{grid-template-columns:1fr}
@@ -338,7 +369,7 @@ footer{padding:clamp(44px,6vw,80px) 0 40px;color:var(--ink-soft)}
 <header class="site">
   <div class="wrap site-inner">
     <a class="logo" href="#top" aria-label="Ozan Azmi Dachdeckermeister – Startseite">
-      <svg viewBox="0 0 414 84" role="img" aria-label="Ozan Azmi Dachdeckermeister Logo">
+      <svg viewBox="0 0 452 84" role="img" aria-label="Ozan Azmi Dachdecker-Meisterbetrieb Logo">
         <!-- Dachmarke: drei Giebel, Traufbalken, Hammer-Emblem -->
         <path d="M5 64 L41 28 L77 64" fill="none" stroke="#6f6f74" stroke-width="12" stroke-linejoin="miter"/>
         <path d="M99 64 L135 28 L171 64" fill="none" stroke="#6f6f74" stroke-width="12" stroke-linejoin="miter"/>
@@ -355,13 +386,14 @@ footer{padding:clamp(44px,6vw,80px) 0 40px;color:var(--ink-soft)}
         <polygon points="75.6,53.5 78.2,57.3 86.4,51.5 83.8,47.7" fill="#f3c3a6"/>
         <circle cx="88" cy="47.5" r="2.2" fill="#f3c3a6"/>
         <text x="188" y="44" font-family="Archivo,system-ui,sans-serif" font-weight="900" font-size="34" letter-spacing="-0.5" fill="#2e2e30">OZAN AZMI</text>
-        <text x="190" y="66" font-family="Archivo,system-ui,sans-serif" font-weight="700" font-size="12.5" letter-spacing="4.2" fill="#2e2e30">DACHDECKERMEISTER</text>
+        <text x="190" y="66" font-family="Archivo,system-ui,sans-serif" font-weight="700" font-size="11" letter-spacing="2.8" fill="#2e2e30">DACHDECKER-MEISTERBETRIEB</text>
       </svg>
     </a>
     <nav class="main" aria-label="Hauptnavigation">
       <a href="#willkommen">Über uns</a>
       <a href="#leistungen">Leistungen</a>
       <a href="#dachformen">Dachformen</a>
+      <a href="#bewertungen">Bewertungen</a>
       <a href="#kontakt">Kontakt</a>
       <a href="#impressum">Impressum</a>
       <a class="cta" href="tel:+491607704088">0160&nbsp;7704088</a>
@@ -376,7 +408,7 @@ footer{padding:clamp(44px,6vw,80px) 0 40px;color:var(--ink-soft)}
     <div class="hero-frame">
       <div class="hero-left">
         <div class="hero-vert">OZAN AZMI</div>
-        <div class="hero-meta">Meisterbetrieb · Dachdeckerei im Rhein-Main-Gebiet</div>
+        <div class="hero-meta">Dachdecker · Bauspengler · Zimmerer · Abdichtung</div>
       </div>
       <div class="hero-stage" id="stagePanel">
         <svg class="scene" id="sceneSvg" viewBox="50 30 1060 660" preserveAspectRatio="xMidYMid meet" aria-label="Animierte isometrische Baustelle: das Team von Meisterbetrieb Ozan deckt ein Dach"></svg>
@@ -411,11 +443,6 @@ footer{padding:clamp(44px,6vw,80px) 0 40px;color:var(--ink-soft)}
           <p>Ob Steil- oder Flachdach, Wärmedämmung oder Dachfenster, Gaubenausbau oder Zimmererarbeiten, Neubau oder Sanierung: Wir erledigen alle Aufträge mit umfassendem Service, großer Erfahrung und echter Leidenschaft für unser Handwerk.</p>
           <p>Eine neue Dacheindeckung sorgt für Sicherheit und steigert den Wert Ihrer Immobilie. Wo eine komplette Neueindeckung nicht nötig ist, bietet eine Teilsanierung die wirtschaftliche Lösung. Wir prüfen den Zustand Ihres Dachstuhls und beraten Sie ehrlich, welcher Weg für Ihr Objekt der richtige ist.</p>
           <p>Gerne realisieren wir auch Ihr Projekt. Rufen Sie uns einfach an. Wir beraten Sie gerne.<br><strong>Ihr Team vom MEISTERBETRIEB OZAN</strong></p>
-
-          <div class="quote">
-            <p>„Herr Ozan hat mich von Anfang an sehr gut beraten und bei meinem Projekt an der Hand genommen und mein Dach erfolgreich gebaut.“</p>
-            <cite>Erfahrungsbericht eines Kunden</cite>
-          </div>
         </div>
         <div>
           <div class="fact-stack">
@@ -635,6 +662,82 @@ footer{padding:clamp(44px,6vw,80px) 0 40px;color:var(--ink-soft)}
     </div>
   </section>
 
+  <!-- ================= BEWERTUNGEN ================= -->
+  <section id="bewertungen">
+    <div class="wrap">
+      <span class="kicker">Erfahrungsberichte</span>
+      <h2 class="big">Das sagen<br><span class="ghost">unsere Kunden.</span></h2>
+      <p class="lead">Unsere Arbeit spricht für sich – und unsere Kunden auch. Hier finden Sie echte Bewertungen von Auftraggebern aus dem Rhein-Main-Gebiet.</p>
+
+      <div class="rating-grid">
+        <div class="rating-summary reveal">
+          <div class="score">4,7</div>
+          <div class="stars" aria-hidden="true">★★★★★</div>
+          <div class="count">4,7 von 5 Sternen<br>aus 12 Google-Rezensionen</div>
+          <a class="src" href="https://www.google.com/maps/search/?api=1&amp;query=Dachdeckermeister+Betrieb+Ozan+R%C3%BCsselsheim" target="_blank" rel="noopener">Alle Rezensionen bei Google ↗</a>
+        </div>
+
+        <div class="review-grid">
+
+          <article class="review reveal">
+            <div class="head">
+              <span class="ava">V</span>
+              <span><span class="who">Viet Hung Tran</span><br><span class="when">vor einem Jahr</span></span>
+            </div>
+            <div class="stars" aria-label="5 von 5 Sternen">★★★★★</div>
+            <p>„Der Dachdeckermeisterbetrieb Ozan hat super Arbeit geleistet. Er war zuverlässig, hat mich bestens beraten, ist sehr kompetent und hat zügig gearbeitet, obwohl er zeitgleich mehrere Baustellen gleichzeitig hatte. Es hat kurzfristig geklappt und ich und meine Frau sind mit dem Ergebnis sehr zufrieden. Wir bedanken uns für Ihre tolle Arbeit :)“</p>
+          </article>
+
+          <article class="review reveal">
+            <div class="head">
+              <span class="ava">H</span>
+              <span><span class="who">Kunde aus dem Rhein-Main-Gebiet</span><br><span class="when">Erfahrungsbericht</span></span>
+            </div>
+            <div class="stars" aria-label="5 von 5 Sternen">★★★★★</div>
+            <p>„Herr Ozan hat mich von Anfang an sehr gut beraten und bei meinem Projekt an der Hand genommen und mein Dach erfolgreich gebaut.“</p>
+          </article>
+
+          <article class="review reveal">
+            <div class="head">
+              <span class="ava">V</span>
+              <span><span class="who">Visar Ahmeti</span><br><span class="when">vor einem Jahr</span></span>
+            </div>
+            <div class="stars" aria-label="5 von 5 Sternen">★★★★★</div>
+            <p>„Top Arbeiten“</p>
+          </article>
+
+          <article class="review reveal">
+            <div class="head">
+              <span class="ava">M</span>
+              <span><span class="who">Medina Latifi</span><br><span class="when">vor 3 Jahren</span></span>
+            </div>
+            <div class="stars" aria-label="5 von 5 Sternen">★★★★★</div>
+            <div class="tags"><span class="chip">Pünktlichkeit</span><span class="chip">Qualität</span><span class="chip">Professionalität</span></div>
+          </article>
+
+          <article class="review reveal">
+            <div class="head">
+              <span class="ava">W</span>
+              <span><span class="who">Wesley Anwohner</span><br><span class="when">vor 6 Jahren</span></span>
+            </div>
+            <div class="stars" aria-label="5 von 5 Sternen">★★★★★</div>
+            <div class="tags"><span class="chip">Ansprechbarkeit</span><span class="chip">Pünktlichkeit</span><span class="chip">Qualität</span><span class="chip">Wert</span></div>
+          </article>
+
+          <article class="review reveal">
+            <div class="head">
+              <span class="ava">S</span>
+              <span><span class="who">Selim Erdogan</span><br><span class="when">vor 6 Jahren</span></span>
+            </div>
+            <div class="stars" aria-label="5 von 5 Sternen">★★★★★</div>
+            <div class="tags"><span class="chip">Ansprechbarkeit</span><span class="chip">Pünktlichkeit</span><span class="chip">Qualität</span><span class="chip">Wert</span></div>
+          </article>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ================= KONTAKT ================= -->
   <section id="kontakt">
     <div class="wrap">
@@ -697,6 +800,7 @@ footer{padding:clamp(44px,6vw,80px) 0 40px;color:var(--ink-soft)}
             <li><a href="#willkommen">Über uns</a></li>
             <li><a href="#leistungen">Leistungen</a></li>
             <li><a href="#dachformen">Dachformen</a></li>
+            <li><a href="#bewertungen">Bewertungen</a></li>
             <li><a href="#experte">Wartung &amp; Inspektion</a></li>
             <li><a href="#kontakt">Kontakt &amp; Öffnungszeiten</a></li>
           </ul>
